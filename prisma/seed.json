@@ -1,0 +1,64 @@
+{
+  "products": [
+    {
+      "name": "Ração Pedigree 20kg",
+      "price": "R$49,95",
+      "image": "https://imgs.search.brave.com/HpVQkjdszpN_Oj2gYoRFJ9yDsCct3lkZfzDHZaDwrX0/rs:fit:900:900:1/g:ce/aHR0cHM6Ly9odHRw/Mi5tbHN0YXRpYy5j/b20vcmFjby1wZWRp/Z3JlZS1wYXJhLWNl/cy1hZHVsdG9zLXNh/Ym9yLWNhcm5lLWUt/Y2VyZWFpcy0yMGtn/LURfTlFfTlBfOTI5/OTc2LU1MQjI5MTMz/MTAxMDYxXzAxMjAx/OS1GLmpwZw"
+    },
+    {
+      "name": "Brinquedo Osso",
+      "price": "R$9,99",
+      "image": "https://imgs.search.brave.com/pgTB2drMCX6vFu0dRdpNbZ_Mla8O0hwg5ekCVdnlIzQ/rs:fit:1000:1000:1/g:ce/aHR0cHM6Ly9pbWFn/ZXMudGNkbi5jb20u/YnIvaW1nL2ltZ19w/cm9kLzU2MDg0NC9i/cmlucXVlZG9fb3Nz/b19kZV9wZWx1Y2lh/X2NoYWxlc2NvXzI4/Nl8xXzIwMTcwOTI5/,MTQyMzQ5LmpwZw"
+    },
+    {
+      "name": "Areia Sanitária Gatos",
+      "price": "R$34,99",
+      "image": "https://www.petlove.com.br/images/products/250532/product/2554195.jpg?1635795886"
+    },
+    {
+      "name": "Ração Premier Gatos",
+      "price": "R$80,10",
+      "image": "https://terrazoo-ecommerce-images.s3.amazonaws.com/uploads/2017/08/76295.png"
+    },
+    {
+      "name": "Premier Gourmet Cão<br> Adulto Sabor Frango<br>e Arroz",
+      "price": "R$9,99",
+      "image": "https://terrazoo-ecommerce-images.s3.amazonaws.com/uploads/2022/06/501107.jpg"
+    },
+    {
+      "name": "Brinquedo Buddy Toys<br> Pneu Nylon",
+      "price": "R$52,50",
+      "image": "https://images.tcdn.com.br/img/img_prod/758683/brinquedo_buddy_toys_pneu_nylon_1693_1_20200330115943.jpg"
+    },
+    {
+      "name": "Premier Cookie Cães<br>Filhotes",
+      "price": "R$14,90",
+      "image": "https://images.tcdn.com.br/img/img_prod/758683/petisco_premier_cookie_caes_filhotes_250_g_2343_1_20200410115358.jpg"
+    },
+    {
+      "name": "Petisco Whiskas<br> Temptations Pelo<Br> Saudável",
+      "price": "R$9,99",
+      "image": "https://images.tcdn.com.br/img/img_prod/758683/petisco_whiskas_temptations_pelo_saudavel_40g_2975_1_20200409161305.jpg"
+    },
+    {
+      "name": "Whiskas Sachê Frango",
+      "price": "R$4,99",
+      "image": "https://images.tcdn.com.br/img/img_prod/758683/whiskas_sache_frango_85_g_4183_1_c6d83bc1e96193cc6a38fcb9bf01c811.jpg"
+    },
+    {
+      "name": "BIOFRESH Gato Adulto",
+      "price": "R$299,99",
+      "image": "https://images.tcdn.com.br/img/img_prod/758683/biofresh_gato_adulto_7_5g_4065_1_7c99c28a9337c1e39280097337ff4e75.jpg"
+    },
+    {
+      "name": "BIOFRESH Ad Peq/Mini ",
+      "price": "R$499,99",
+      "image": "https://images.tcdn.com.br/img/img_prod/758683/biofresh_ad_peq_mini_15kg_4005_1_63aae1f116cd93032e14fd3fbeb7a76a.jpg"
+    },
+    {
+      "name": "Friskies Mix de Carnes",
+      "price": "R$154,50",
+      "image": "https://images.tcdn.com.br/img/img_prod/758683/friskies_mix_de_carnes_10_1kg_4039_1_de05604113cc3cd83d7170d2a8a670e7.jpg"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="stylesheets/style.css" />
+</head>
+<body>
+    <h1>Products CRUD</h1>
+
+<h2>Create Product</h2>
+<form action="/products" method="POST">
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name" required><br><br>
+  <label for="price">Price:</label>
+  <input type="text" id="price" name="price" required><br><br>
+  <label for="image">Image:</label>
+  <input type="text" id="image" name="image"><br><br>
+  <input type="submit" value="Submit">
+</form>
+
+<h2>Existing Products</h2>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Image</th>
+    <th>Actions</th>
+  </tr>
+  <% products.forEach(product => { %>
+    <tr>
+      <td><%= product.id %></td>
+      <td><%= product.name %></td>
+      <td><%= product.price %></td>
+      <td><%= product.image %></td>
+      <td>
+        <a href="/products/<%= product.id %>">View</a> |
+        <a href="/products/<%= product.id %>/edit">Edit</a> |
+        <form action="/products/<%= product.id %>" method="POST"> <input type="hidden" name="_method" value="DELETE">
+          <input type="hidden" name="_method" value="DELETE">
+          <input type="submit" value="Delete">
+        </form>
+      </td>
+    </tr>
+  <% }) %>
+</table>
+</body>
+</html>
