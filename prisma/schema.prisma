@@ -16,8 +16,6 @@ model User {
   CPF Float
 }
 
-
-
 model Products {
   id    Int     @id @default(autoincrement())
   name  String

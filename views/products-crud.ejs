@@ -1,50 +1,64 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="stylesheets/style.css" />
-</head>
-<body>
-    <h1>Products CRUD</h1>
+<%- include('partials/header.ejs', { pageTitle: 'ExistindoNews | request' , styleSheet: 'products-crud' }) %>
 
-<h2>Create Product</h2>
-<form action="/products" method="POST">
-  <label for="name">Name:</label>
-  <input type="text" id="name" name="name" required><br><br>
-  <label for="price">Price:</label>
-  <input type="text" id="price" name="price" required><br><br>
-  <label for="image">Image:</label>
-  <input type="text" id="image" name="image"><br><br>
-  <input type="submit" value="Submit">
-</form>
+<main>
+	<h1>Produtos</h1>
+	<section class="form-create">
+		<form action="/products" method="POST">
+			<h2>Criar Produto</h2>
+			<div>
+				<label for="name">Name:</label>
+				<input type="text" id="name" name="name" required>
+			</div>
+			<div>
+				<label for="price">Price:</label>
+				<input type="text" id="price" name="price" required>
+			</div>
+			<div>
+				<label for="image">Image:</label>
+				<input type="text" id="image" name="image">
+			</div>
+			<button type="submit">Criar</button>
+		</form>
+	</section>
 
-<h2>Existing Products</h2>
-<table>
-  <tr>
-    <th>ID</th>
-    <th>Name</th>
-    <th>Price</th>
-    <th>Image</th>
-    <th>Actions</th>
-  </tr>
-  <% products.forEach(product => { %>
-    <tr>
-      <td><%= product.id %></td>
-      <td><%= product.name %></td>
-      <td><%= product.price %></td>
-      <td><%= product.image %></td>
-      <td>
-        <a href="/products/<%= product.id %>">View</a> |
-        <a href="/products/<%= product.id %>/edit">Edit</a> |
-        <form action="/products/<%= product.id %>" method="POST"> <input type="hidden" name="_method" value="DELETE">
-          <input type="hidden" name="_method" value="DELETE">
-          <input type="submit" value="Delete">
-        </form>
-      </td>
-    </tr>
-  <% }) %>
-</table>
-</body>
-</html>
+	<section class="products">
+		<h2>Produtos Registrados</h2>
+		<table>
+			<tr class="desc">
+				<th>Número</th>
+				<th>Imagem</th>
+				<th>Item</th>
+				<th>Preço</th>
+				<th>Editar</th>
+				<th>Deletar</th>
+			</tr>
+			<% products.forEach(product=> { %>
+				<tr class="item">
+					<a href="/products/<%= product.id %>">
+						<td>
+							<%= product.id %>
+						</td>
+						<td>
+							<div class="img">
+								<img src="<%= product.image %>" alt="Not Found">
+							</div>
+						</td>
+						<td>
+							<%= product.name %>
+						</td>
+						<td>
+							<%= product.price %>
+						</td>
+					</a>
+					<td>
+						<a href="/products/update/<%= product.id %>"><i class="fa-solid fa-pen-to-square"></i></a>
+					</td>
+					<td>
+						<a href="/products/delete/<%= product.id %>"><i class="fa-solid fa-trash"></i></a>
+					</td>
+				</tr>
+				<% }) %>
+		</table>
+	</section>
+</main>
+<%- include('partials/footer.ejs') %>
