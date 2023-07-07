@@ -1,4 +1,4 @@
-<%- include('partials/header.ejs', { pageTitle: 'ExistindoNews | request' , styleSheet: 'products-crud' }) %>
+<%- include('partials/header.ejs', { pageTitle: 'MR.PET | request' , styleSheet: 'products-crud' }) %>
 
 <main>
 	<h1>Produtos</h1>
@@ -29,7 +29,9 @@
 				<th>Imagem</th>
 				<th>Item</th>
 				<th>Preço</th>
+				<th>Quem adicionou</th>
 				<th>Editar</th>
+				
 				<th>Deletar</th>
 			</tr>
 			<% products.forEach(product=> { %>
@@ -49,6 +51,9 @@
 						<td>
 							<%= product.price %>
 						</td>
+						<td>
+							<%= product.creator.name %>
+						  </td>
 					</a>
 					<td>
 						<a href="/products/update/<%= product.id %>"><i class="fa-solid fa-pen-to-square"></i></a>
@@ -61,4 +66,3 @@
 		</table>
 	</section>
 </main>
-<%- include('partials/footer.ejs') %>

@@ -14,6 +14,7 @@ model User {
   id   Int     @id @default(autoincrement())
   name  String?
   CPF Float
+  products Products[]
 }
 
 model Products {
@@ -21,4 +22,6 @@ model Products {
   name  String
   price String
   image String
+  creatorId Int
+  creator User @relation(fields: [creatorId], references: [id])
 }

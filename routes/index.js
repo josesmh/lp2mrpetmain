@@ -5,9 +5,14 @@ const { PrismaClient } = require( '@prisma/client' );
 const prisma = new PrismaClient();
 
 router.get( '/products', async ( req, res ) => {
-	const products = await prisma.products.findMany();
+	const products = await prisma.products.findMany({
+    include: {
+      creator: true,
+    },
+  });
 	res.json( products );
 } );
+
 
 // test
 
@@ -63,7 +68,10 @@ router.get( '/my-account', ( req, res ) => {
 
 router.get( '/products-crud', async ( req, res ) => {
 	try {
-		const products = await prisma.products.findMany();
+		const products = await prisma.products.findMany({
+			include: {
+			  creator: true,
+			}},);
 		res.render( 'products-crud', { products } );
 	} catch ( error ) {
 		res.status( 500 ).json( { error: error.message } );
@@ -73,12 +81,14 @@ router.get( '/products-crud', async ( req, res ) => {
 // Create
 router.post( '/products', async ( req, res ) => {
 	const { name, price, image } = req.body;
+	const creatorId = req.session.user.id;
 	try {
 		const product = await prisma.products.create( {
 			data: {
 				name,
 				price,
-				image
+				image,
+				creatorId,
 			}
 		} );
 		res.json( product );
@@ -90,7 +100,11 @@ router.post( '/products', async ( req, res ) => {
 // Read
 router.get( '/products', async ( req, res ) => {
 	try {
-		const products = await prisma.products.findMany();
+		const products = await prisma.products.findMany({
+			include: {
+			  creator: true,
+			},
+		  });
 		res.json( products );
 	} catch ( error ) {
 		res.status( 500 ).json( { error: error.message } );
@@ -100,8 +114,11 @@ router.get( '/products', async ( req, res ) => {
 router.get( '/products/:id', async ( req, res ) => {
 	const { id } = req.params;
 	try {
-		const product = await prisma.products.findUnique( {
-			where: { id: parseInt( id ) }
+		const product = await prisma.products.findUnique({
+			where: { id: parseInt( id ) },include: {
+				creator: true,
+			  },
+			
 		} );
 		if ( product ) {
 			res.json( product );
@@ -120,7 +137,8 @@ router.put( '/products/:id', async ( req, res ) => {
 	try {
 		const product = await prisma.products.update( {
 			where: { id: parseInt( id ) },
-			data: { name, price, image }
+			data: { name, price, image },
+			include: { creator: true },
 		} );
 		res.json( product );
 	} catch ( error ) {

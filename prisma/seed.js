@@ -19,7 +19,10 @@ async function main () {
 
 	for ( const product of products ) {
 		await prisma.products.create( {
-			data: product,
+			data: {
+				...product,
+				creatorId: João.id
+			},
 		} );
 	}
 }
