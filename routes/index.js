@@ -131,7 +131,7 @@ router.get( '/products/:id', async ( req, res ) => {
 } );
 
 // Update
-router.put( '/products/:id', async ( req, res ) => {
+router.post( '/products/:id', async ( req, res ) => {
 	const { id } = req.params;
 	const { name, price, image } = req.body;
 	try {
@@ -140,11 +140,26 @@ router.put( '/products/:id', async ( req, res ) => {
 			data: { name, price, image },
 			include: { creator: true },
 		} );
-		res.json( product );
+		res.redirect( '/products-crud' );
 	} catch ( error ) {
 		res.status( 500 ).json( { error: error.message } );
 	}
 } );
+
+
+router.get( '/products/update/:id', async ( req, res ) => {
+	const { id } = req.params;
+	try {
+		const product = await prisma.products.findUnique( {
+			where: { id: parseInt( id ) },
+			include: { creator: true },
+		} );
+		res.render( 'update', { product } );
+	} catch ( error ) {
+		res.status( 500 ).json( { error: error.message } );
+	}
+} );
+
 
 // Delete
 router.delete( '/products/:id', async ( req, res ) => {

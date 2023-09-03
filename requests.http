@@ -1,0 +1,5 @@
+
+@host = http://localhost:3000
+
+
+PUT  {{host}}/products/2
