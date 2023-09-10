@@ -3,6 +3,16 @@ var router = express.Router();
 const app = express();
 const { PrismaClient } = require( '@prisma/client' );
 const prisma = new PrismaClient();
+const bcrypt = require( 'bcrypt');
+const jwt = require( 'jsonwebtoken');
+
+const isAuthenticated = require('../middleware/auth');
+
+
+
+
+const saltRounds = Number(process.env.SALT_ROUNDS);
+
 
 router.get( '/products', async ( req, res ) => {
 	const products = await prisma.products.findMany({
@@ -21,12 +31,13 @@ router.get( '/products', async ( req, res ) => {
 
 
 router.post( '/register', async ( req, res ) => {
-	const { name, cpf } = req.body;
+	const { name, cpf, password } = req.body;
 	try {
 		const user = await prisma.user.create( {
 			data: {
 				name,
-				CPF: parseFloat( cpf )
+				CPF: parseFloat( cpf ),
+				password
 			}
 		} );
 		req.session.user = user;
@@ -38,26 +49,41 @@ router.post( '/register', async ( req, res ) => {
 
 
 router.post( '/login', async ( req, res ) => {
-	const { cpf } = req.body;
 	try {
-		const user = await prisma.user.findFirst( {
-			where: {
-				CPF: parseFloat( cpf )
-			}
-		} );
-		if ( user ) {
-			req.session.user = user;
-			res.redirect( '/' );
+		const { cpf, password } = req.body;
+	
+		const user = await async function readByCPF(cpf) {
+			const user = await prisma.User.findFirst({
+			  where: {
+				CPF,
+			  },
+			});
+			return user;}
+
+		  
+	
+		const { id: userId, password: hash } = user;
+	
+		const match = await bcrypt.compare(password, hash);
+	
+		if (match) {
+		  const token = jwt.sign(
+			{ userId },
+			process.env.JWT_SECRET,
+			{ expiresIn: 3600 } // 1h
+		  );
+	
+		  res.json({ auth: true, token });
 		} else {
-			res.status( 401 ).json( { error: 'Invalid credentials' } );
+		  throw new Error('User not found');
 		}
-	} catch ( error ) {
-		res.status( 500 ).json( { error: error.message } );
-	}
-} );
+	  } catch (error) {
+		res.status(401).json({ error: 'User not found' });
+	  }
+	});
+	
 
-
-router.get( '/my-account', ( req, res ) => {
+router.get( '/my-account', isAuthenticated,  ( req, res ) => {
 	if ( req.session.user ) {
 		res.render( 'my-account', { user: req.session.user } );
 	} else {
@@ -66,7 +92,7 @@ router.get( '/my-account', ( req, res ) => {
 } );
 
 
-router.get( '/products-crud', async ( req, res ) => {
+router.get( '/products-crud', isAuthenticated, async ( req, res ) => {
 	try {
 		const products = await prisma.products.findMany({
 			include: {
@@ -174,6 +200,21 @@ router.delete( '/products/:id', async ( req, res ) => {
 	}
 } );
 
+router.get( '/products/delete/:id', async ( req, res ) => {
+	const { id } = req.params;
+	try {
+		const product = await prisma.products.delete( {
+			where: { id: parseInt( id ) },
+			include: { creator: true },
+		} );
+		res.redirect('/products-crud');
+	} catch ( error ) {
+		res.status( 500 ).json( { error: error.message } );
+	}
+} );
+
+
+
 router.get( '/register', ( req, res ) => {
 	res.render( 'register' );
 } );
@@ -210,6 +251,27 @@ router.get( '/baths', function ( req, res, next ) {
 router.get( '/appointments', function ( req, res, next ) {
 	res.render( 'scheduleAppointments', { title: 'Express' } );
 } );
+
+
+
+// 404 handler
+router.use((req, res, next) => {
+	res.status(404).json({ message: 'Content not found!' });
+  });
+  
+  // Error handler
+  router.use((err, req, res, next) => {
+	console.error(err.stack);
+	if (err instanceof HTTPError) {
+	  res.status(err.code).json({ message: err.message });
+	} else {
+	  res.status(500).json({ message: 'Something broke!' });
+	}
+  });
+  
+
+
+
 // server.get("/products", (req, res) => {
 //   res.json(products);
 // });

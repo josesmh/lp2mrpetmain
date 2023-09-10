@@ -5,6 +5,16 @@ var cookieParser = require( 'cookie-parser' );
 var logger = require( 'morgan' );
 var session = require( 'express-session' );
 const livereload = require('livereload');
+const dot= require ('dotenv/config');
+
+
+
+
+
+
+
+
+
 
 
 var app = express();

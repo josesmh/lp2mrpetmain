@@ -12,6 +12,7 @@ async function main () {
 		data: {
 			CPF: 125.212353463,
 			name: 'João',
+			password: '12',
 		},
 	} );
 
