@@ -1,10 +1,14 @@
 import API from './lib/auth.js';
+console.log("signin.js loaded");
+
+
 
 window.handleSubmit = handleSubmit;
 
 const form = document.querySelector('form');
 
 async function handleSubmit(event) {
+  console.log("Form submitted");
   event.preventDefault();
 
   const user = Object.fromEntries(new FormData(form));
@@ -23,7 +27,12 @@ async function handleSubmit(event) {
 
   if (auth) {
     API.signin(token);
+    window.location.href = '/';
   } else {
-    console.log('Error no login');
+    console.log('Erro no login');
   }
 }
+
+
+
+

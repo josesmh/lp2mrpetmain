@@ -9,6 +9,7 @@ function isAuthenticated(req, res, next) {
     const { userId } = jwt.verify(token, process.env.JWT_SECRET);
 
     req.userId = userId;
+  
 
     next();
   } catch (error) {
@@ -16,5 +17,3 @@ function isAuthenticated(req, res, next) {
   }
 }
 module.exports = isAuthenticated;
-
-
