@@ -1,0 +1,17 @@
+main{
+	width: 1200px;
+	display: block;
+	justify-content: space-between;
+	margin: 70px auto 0px;
+	flex-wrap: wrap;
+	min-height: 80vh;
+}
+
+.start{
+	flex-direction: column;
+	justify-content: flex-start;
+}
+.column{
+	flex-direction: column;
+	justify-content: flex-start;
+}

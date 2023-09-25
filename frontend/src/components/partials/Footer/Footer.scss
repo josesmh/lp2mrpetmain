@@ -1,0 +1,45 @@
+footer {
+	background: #000;
+	height: 150px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	ul {
+		width: 200px;
+		display: flex;
+		justify-content: space-between;
+		margin: 0 auto;
+
+		li {
+			padding: 5px;
+			margin-bottom: 20px;
+
+			svg {
+				color: #fff;
+				font-size: 2rem;
+
+				:hover {}
+			}
+
+			&:hover {
+				cursor: pointer;
+
+				svg {
+					color: yellow;
+					cursor: pointer;
+				}
+			}
+		}
+	}
+
+	p {
+		color: rgb(255, 255, 255);
+		text-align: center;
+
+		span {
+			font-size: 1.2rem;
+		}
+	}
+}

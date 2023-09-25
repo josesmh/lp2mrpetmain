@@ -1,0 +1,8 @@
+li {
+	span{
+		color: rgb(255, 255, 255);
+		&:hover{
+			color: #FFD400;
+		}
+	}
+}

@@ -1,0 +1,20 @@
+nav{
+	width: 1200px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 80vw;
+	flex-direction: row;
+}
+
+ul{
+	display: flex;
+	justify-content: space-evenly;
+	width: 40vw;
+}
+
+img.logo{
+	width: 50px;
+	height: 50px;
+	border-radius:50%;
+}
