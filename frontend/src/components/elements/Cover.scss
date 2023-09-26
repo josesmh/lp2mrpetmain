@@ -1,0 +1,64 @@
+.Cover {
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	* {
+		color: var(--color-theme);
+	}
+
+	.gradient {
+		width: 100vw;
+		height: 100vh;
+		background: linear-gradient(180deg, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0.815) 100%);
+		position: absolute;
+	}
+
+	.containerImg {
+		width: 100vw;
+		height: 100vh;
+		position: absolute;
+
+		.img {
+			width: 100vw;
+			height: 100vh;
+			min-width: 2800px;
+			background-image: url("https://images.tcdn.com.br/img/img_prod/1059813/1673293045_sache-gato.png");
+			background-position: center 80px;
+			background-size: 100% 100%;
+			background-repeat: no-repeat;
+			background-attachment: fixed;
+		}
+	}
+
+	.container {
+		position: absolute;
+		width: 600px;
+		height: 300px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		background: #ffffff;
+		border-radius: 20px;
+	box-shadow: 0 0 30px 0px rgba(0, 0, 0);
+	outline: 3px solid var(--color-theme);
+
+
+		.preTitle {
+			font-size: 1.2rem;
+			font-weight: 900;
+		}
+		.title {
+			font-size: 5rem;
+		}
+
+		.subtitle {
+			font-size: 1.5rem;
+			font-weight: 300;
+		}
+	}
+}

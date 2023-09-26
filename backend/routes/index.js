@@ -19,12 +19,6 @@
 	res.json(products);
 	});
 
-	// test
-
-
-
-
-
 	router.post('/register', async (req, res) => {
 		var { name, cpf, password } = req.body;
 	

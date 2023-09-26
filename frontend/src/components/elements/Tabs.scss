@@ -1,0 +1,16 @@
+.Tabs{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: #000;
+	height: 70px;
+	*{
+		color: #fff;
+	}
+	ul{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+	}
+}

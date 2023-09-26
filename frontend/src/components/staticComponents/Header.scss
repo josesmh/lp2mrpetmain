@@ -5,5 +5,7 @@ header{
 	justify-content: center;
 	align-items: center;
 	background: #000;
-
+	position: fixed;
+	z-index: 1000;
+	top: 0;
 }

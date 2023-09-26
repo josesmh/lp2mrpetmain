@@ -9,8 +9,9 @@ align-items: center;
 		color: #fff;
 		font-size: 2rem;
 		text-transform: capitalize;
+		cursor: pointer;
 		&:hover{
-			color: #FFD400;
+			color: var(--color-theme);
 		}
 	}
 }

@@ -1,17 +1,18 @@
 import { useState, useEffect } from 'react';
+import CardsProducts from '../elements/CardsProducts';
 
 
 import axios from "axios";
 
 function Products () {
-	const [ dados, setDados ] = useState( [] );
+	const [ cardsProducts, setCardsProducts ] = useState( [] );
 
 	useEffect( () => {
 		const fetchData = async () => {
 			try {
 				const response = await axios.get( 'http://localhost:3001/products' );
-				setDados( response.data );
-				console.log( dados );
+				setCardsProducts( response.data );
+				console.log( cardsProducts );
 			} catch ( error ) {
 				console.log( error.message); 
 			}
@@ -23,11 +24,9 @@ function Products () {
 		<section>
 			<h1>Produtos</h1>
 			 <ul>
-			{dados.map( ( option ) => {
+			{cardsProducts.map( ( card ) => {
 						return (
-							<li key={option.id} value={option.id}>
-								{option.name}
-							</li>
+							<CardsProducts id={card.id} ></CardsProducts>
 						);
 					} )}
 			</ul> 

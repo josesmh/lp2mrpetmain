@@ -1,6 +1,6 @@
 import React from 'react';
 import './LogoNavBar.scss';
-import logoImg from '../../assets/Logo.jpg';
+import logoImg from '../assets/Logo.jpg';
 
 const Index = () => {
 	return (
