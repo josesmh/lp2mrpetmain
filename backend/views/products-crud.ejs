@@ -1,44 +1,6 @@
-import { useState, useEffect } from 'react';
+<%- include('partials/header.ejs', { pageTitle: 'MR.PET | request' , styleSheet: 'products-crud' }) %>
 
-
-import axios from "axios";
-
-function Products () {
-	const [ dados, setDados ] = useState( [] );
-
-	useEffect( () => {
-		const fetchData = async () => {
-			try {
-				const response = await axios.get( 'http://localhost:3001/products' );
-				setDados( response.data );
-				console.log( dados );
-			} catch ( error ) {
-				console.log( error.message); 
-			}
-		};
-
-		fetchData();
-	},[]);
-	return (
-		<section>
-			<h1>Produtos</h1>
-			 <ul>
-			{dados.map( ( option ) => {
-						return (
-							<li key={option.id} value={option.id}>
-								{option.name}
-							</li>
-						);
-					} )}
-			</ul> 
-		</section>
-	);
-}
-
-export default Products;
-
-
-{/* <main>
+<main>
 	<h1>Produtos</h1>
 	<section class="form-create">
 		<form action="/products" method="POST">
@@ -103,4 +65,4 @@ export default Products;
 				<% }) %>
 		</table>
 	</section>
-</main> */}
+</main>
